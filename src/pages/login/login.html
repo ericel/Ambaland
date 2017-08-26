@@ -7,12 +7,25 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bgthis">
 	<div class="logo">
 		<img src="assets/img/appicon.svg" alt="Ionic logo">
 	</div>
-
-	<form #loginForm="ngForm" novalidate>
+	<div text-center>Click below to log in.<br><em>Join the 10K+ Awesome weytindey users</em></div>
+	<ion-row responsive-sm>
+			
+		<ion-col>
+    		<button ion-button class="logButton" color="facebook" (click)="signInWithFacebook()" full round icon-start>
+					<ion-icon name="logo-facebook" item-start></ion-icon> Facebook
+			</button>
+		</ion-col>
+		<ion-col>
+			<button ion-button class="logButton" color="google" (click)="signInWithGoogle()" full round icon-start>
+					<ion-icon name="logo-google" item-start></ion-icon> Google</button>
+		</ion-col>
+	</ion-row>
+	<div text-center>There's a lot you can do with a weytindey account! Your account is secured. We take no passwords, just a click away to get your account working.</div>
+	<!--<form #loginForm="ngForm" novalidate>
 		<ion-list no-lines>
 			<ion-item>
 				<ion-label stacked color="primary">Username</ion-label>
@@ -42,6 +55,6 @@
 				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
 			</ion-col>
 		</ion-row>
-	</form>
+	</form>-->
 
 </ion-content>

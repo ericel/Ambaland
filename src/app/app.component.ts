@@ -18,7 +18,7 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
-
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 export interface PageInterface {
   title: string;
   name: string;
@@ -66,7 +66,8 @@ export class WeytindeyApp {
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public authService: AuthServiceProvider
   ) {
 
     // Check if the user has already seen the tutorial
@@ -84,14 +85,13 @@ export class WeytindeyApp {
     confData.load();
 
     // decide which menu items should be hidden by current login status stored in local storage
-    this.userData.hasLoggedIn().then((hasLoggedIn) => {
+   
+    /*this.userData.hasLoggedIn().then((hasLoggedIn) => {
       this.enableMenu(hasLoggedIn === true);
-    });
-    this.enableMenu(true);
-
-    this.listenToLoginEvents();
+    });*/
+    
   }
-
+ 
   openPage(page: PageInterface) {
     let params = {};
 
@@ -116,7 +116,8 @@ export class WeytindeyApp {
 
     if (page.logsOut === true) {
       // Give the menu time to close before changing to logged out
-      this.userData.logout();
+      //this.userData.logout();
+      this.authService.signOut();
     }
   }
 
@@ -124,24 +125,7 @@ export class WeytindeyApp {
     this.nav.setRoot(TutorialPage);
   }
 
-  listenToLoginEvents() {
-    this.events.subscribe('user:login', () => {
-      this.enableMenu(true);
-    });
 
-    this.events.subscribe('user:signup', () => {
-      this.enableMenu(true);
-    });
-
-    this.events.subscribe('user:logout', () => {
-      this.enableMenu(false);
-    });
-  }
-
-  enableMenu(loggedIn: boolean) {
-    this.menu.enable(loggedIn, 'loggedInMenu');
-    this.menu.enable(!loggedIn, 'loggedOutMenu');
-  }
 
   platformReady() {
     // Call any initial plugins when ready

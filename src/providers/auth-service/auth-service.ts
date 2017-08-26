@@ -24,6 +24,7 @@ export class AuthServiceProvider {
               this.afAuth.authState.subscribe((auth) => {
                 this.authState = auth
               });
+              
             }
   
     // Returns true if user is logged in
@@ -143,7 +144,7 @@ export class AuthServiceProvider {
     private updateUserData(): void {
     // Writes user name and email to realtime db
     // useful if your app displays information about users or for admin features
-  
+      //console.log(this.authState.displayName);
       let path = `users/${this.currentUserId}`; // Endpoint on firebase
       let data = {
                     email: this.authState.email,
@@ -154,4 +155,6 @@ export class AuthServiceProvider {
       .catch(error => console.log(error));
   
     }
+
+   
 }
