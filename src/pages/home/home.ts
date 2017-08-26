@@ -12,19 +12,21 @@ import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
-import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
+import { HomeFilterPage } from '../home-filter/home-filter';
 
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
-  selector: 'page-schedule',
-  templateUrl: 'schedule.html'
+  selector: 'page-home',
+  templateUrl: 'home.html'
 })
-export class SchedulePage {
-  // the list is a child of the schedule page
-  // @ViewChild('scheduleList') gets a reference to the list
-  // with the variable #scheduleList, `read: List` tells it to return
+export class HomePage {
+  // the list is a child of the home page
+  // @ViewChild('homeList') gets a reference to the list
+  // with the variable #homeList, `read: List` tells it to return
   // the List and not a reference to the element
-  @ViewChild('scheduleList', { read: List }) scheduleList: List;
+  @ViewChild('homeList', { read: List }) homeList: List;
+  audios: FirebaseListObservable<any[]>;
 
   dayIndex = 0;
   queryText = '';
@@ -43,16 +45,19 @@ export class SchedulePage {
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
-  ) {}
-
-  ionViewDidLoad() {
-    this.app.setTitle('Schedule');
-    this.updateSchedule();
+    db: AngularFireDatabase
+  ) {
+    this.audios = db.list('/eAudios');
   }
 
-  updateSchedule() {
-    // Close any open sliding items when the schedule updates
-    this.scheduleList && this.scheduleList.closeSlidingItems();
+  ionViewDidLoad() {
+    this.app.setTitle('Home');
+    this.updateHome();
+  }
+
+  updateHome() {
+    // Close any open sliding items when the home updates
+    this.homeList && this.homeList.closeSlidingItems();
 
     this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
@@ -61,13 +66,13 @@ export class SchedulePage {
   }
 
   presentFilter() {
-    let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
+    let modal = this.modalCtrl.create(HomeFilterPage, this.excludeTracks);
     modal.present();
 
     modal.onWillDismiss((data: any[]) => {
       if (data) {
         this.excludeTracks = data;
-        this.updateSchedule();
+        this.updateHome();
       }
     });
 
@@ -125,7 +130,7 @@ export class SchedulePage {
           handler: () => {
             // they want to remove this session from their favorites
             this.user.removeFavorite(sessionData.name);
-            this.updateSchedule();
+            this.updateHome();
 
             // close the sliding item and hide the option buttons
             slidingItem.close();

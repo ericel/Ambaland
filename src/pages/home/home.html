@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-navbar no-border-bottom>
+  <ion-navbar no-border-bottom >
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateHome()">
       <ion-segment-button value="all">
         All
       </ion-segment-button>
@@ -23,7 +23,7 @@
   <ion-toolbar no-border-top>
     <ion-searchbar color="primary"
                    [(ngModel)]="queryText"
-                   (ionInput)="updateSchedule()"
+                   (ionInput)="updateHome()"
                    placeholder="Search">
     </ion-searchbar>
   </ion-toolbar>
@@ -72,6 +72,11 @@
 
   <ion-list-header [hidden]="shownSessions > 0">
       No Sessions Found
+      <ion-list>
+        <ion-item class="text" *ngFor="let audio of audios | async">
+          {{audio.filename}}
+        </ion-item>
+        </ion-list>
   </ion-list-header>
 
   <ion-fab bottom right #fab>

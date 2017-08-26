@@ -8,16 +8,18 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireAuthModule} from 'angularfire2/auth';
+import { WeytindeyApp } from './app.component';
 
-import { ConferenceApp } from './app.component';
-
+import { HomePage } from '../pages/home/home';
+import { HomeFilterPage } from '../pages/home-filter/home-filter';
 import { AboutPage } from '../pages/about/about';
 import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
-import { SchedulePage } from '../pages/schedule/schedule';
-import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { SignupPage } from '../pages/signup/signup';
 import { SpeakerDetailPage } from '../pages/speaker-detail/speaker-detail';
@@ -28,18 +30,30 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { AudioServiceProvider } from '../providers/audio-service/audio-service';
 
+
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyDDZrLSmfW67BUfeDbl0oKhGKrEEc1DaVg",
+  authDomain: "enoeasy-94b34.firebaseapp.com",
+  databaseURL: "https://enoeasy-94b34.firebaseio.com",
+  projectId: "enoeasy-94b34",
+  storageBucket: "enoeasy-94b34.appspot.com",
+  messagingSenderId: "586504231618"
+}
 
 @NgModule({
   declarations: [
-    ConferenceApp,
+    WeytindeyApp,
+    HomePage,
+    HomeFilterPage,
     AboutPage,
     AccountPage,
     LoginPage,
     MapPage,
     PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
     SessionDetailPage,
     SignupPage,
     SpeakerDetailPage,
@@ -51,12 +65,11 @@ import { UserData } from '../providers/user-data';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(ConferenceApp, {}, {
+    IonicModule.forRoot(WeytindeyApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
-        { component: SchedulePage, name: 'Schedule', segment: 'schedule' },
         { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
-        { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
+        { component: HomeFilterPage, name: 'HomeFilter', segment: 'homeFilter' },
         { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
         { component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:speakerId' },
         { component: MapPage, name: 'Map', segment: 'map' },
@@ -68,18 +81,21 @@ import { UserData } from '../providers/user-data';
         { component: SignupPage, name: 'SignupPage', segment: 'signup' }
       ]
     }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    ConferenceApp,
+    WeytindeyApp,
+    HomePage,
+    HomeFilterPage,
     AboutPage,
     AccountPage,
     LoginPage,
     MapPage,
     PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
     SessionDetailPage,
     SignupPage,
     SpeakerDetailPage,
@@ -93,7 +109,9 @@ import { UserData } from '../providers/user-data';
     ConferenceData,
     UserData,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    AuthServiceProvider,
+    AudioServiceProvider
   ]
 })
 export class AppModule { }
