@@ -116,10 +116,16 @@ export class WeytindeyApp {
 
     if (page.logsOut === true) {
       // Give the menu time to close before changing to logged out
-      //this.userData.logout();
-      this.authService.signOut();
+     //this.userData.logout();
+     setTimeout(() => {
+       this.authService.signOut().then( () => this.nav.setRoot(HomePage));
+     }, 30);
+     
+      
     }
+
   }
+  
 
   openTutorial() {
     this.nav.setRoot(TutorialPage);

@@ -1,3 +1,4 @@
+import { ViewChild } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -6,6 +7,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 // Do not import from 'firebase' as you'll lose the tree shaking benefits
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Nav } from 'ionic-angular';
+import { HomePage } from '../../pages/home/home';
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -15,10 +18,10 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class AuthServiceProvider {
   authState: any = null;
-  
+  @ViewChild('navCtrl') navCtrl: Nav;
     constructor(public http: Http, 
                 private afAuth: AngularFireAuth,
-                private db: AngularFireDatabase,
+                private db: AngularFireDatabase
                 ) {
   
               this.afAuth.authState.subscribe((auth) => {
@@ -133,9 +136,10 @@ export class AuthServiceProvider {
   
   
     //// Sign Out ////
-  
-    signOut(): void {
-      this.afAuth.auth.signOut();
+   
+    signOut(): firebase.Promise<any> {
+      return this.afAuth.auth.signOut();
+
     }
   
   
@@ -152,6 +156,9 @@ export class AuthServiceProvider {
                   }
   
       this.db.object(path).update(data)
+      .then(() => this.navCtrl.setPages([
+        { page: HomePage }
+      ]))
       .catch(error => console.log(error));
   
     }
