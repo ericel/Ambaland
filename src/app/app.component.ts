@@ -48,7 +48,7 @@ export class WeytindeyApp {
     { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
   ];
   loggedInPages: PageInterface[] = [
-    { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
+    { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'setting'},
     { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
     { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
   ];
@@ -120,10 +120,7 @@ export class WeytindeyApp {
      setTimeout(() => {
        this.authService.signOut().then( () => this.nav.setRoot(HomePage));
      }, 30);
-     
-      
     }
-
   }
   
 
