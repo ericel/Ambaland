@@ -34,6 +34,18 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-list>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="/assets/img/ica-slidebox-img-1.png">
+        </ion-avatar>
+        <h2>Finn</h2>
+        <h3>Don't Know What To Do!</h3>
+        <p>I've had a pretty messed up day. If we just...</p>
+      </ion-item>
+    </ion-list>
+
+
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
     <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">

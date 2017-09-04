@@ -51,22 +51,30 @@
   <!-- logged in menu -->
   <ion-menu *ngIf="authService.authenticated" [content]="content">
      
-    <ion-header>
+    <ion-header class="header-u-c">
       <ion-toolbar>
-        <ion-row>
-            <ion-col>
-                  <ion-title>Menu</ion-title>
+        <ion-row  >
+            <ion-col col-2>
+                <ion-avatar item-start class="avatar" start>
+                    <img src="{{authService.currentUser.avatar">
+                  </ion-avatar>
             </ion-col>
-            <ion-col>
-                <ion-list>
-                    <ion-item>
-                      <ion-avatar item-start>
-                        <img src="/assets/img/ica-slidebox-img-1.png">
-                      </ion-avatar>
-                      <h2>{{authService.currentUserDisplayName}}</h2>
-                      <p>Ugh. As if.</p>
-                    </ion-item>
-                  </ion-list>
+            <ion-col col-10>
+              
+                    <ion-title><h2>{{authService.currentUserDisplayName}}</h2></ion-title>
+                    <div>
+                        <ion-segment>
+                            <ion-segment-button value="all">
+                              My profile
+                            </ion-segment-button>
+                            <ion-segment-button value="favorites">
+                              My Blogs
+                            </ion-segment-button>
+                            <ion-segment-button >
+                              Settings
+                            </ion-segment-button>
+                          </ion-segment>
+                    </div>
             </ion-col>
         </ion-row>
       </ion-toolbar>
