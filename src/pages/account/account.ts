@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 import { AlertController, NavController } from 'ionic-angular';
 
-import { UserData } from '../../providers/user-data';
-
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-account',
@@ -12,12 +11,13 @@ import { UserData } from '../../providers/user-data';
 export class AccountPage {
   username: string;
 
-  constructor(public alertCtrl: AlertController, public nav: NavController, public userData: UserData) {
-
+  constructor(public alertCtrl: AlertController, public nav: NavController, public auth: AuthServiceProvider) {
+     console.log('Clicked to update picture');
   }
 
   ngAfterViewInit() {
-    this.getUsername();
+   // this.getUsername();
+   console.log(this.auth.currentUserDisplayName);
   }
 
   updatePicture() {
@@ -27,7 +27,7 @@ export class AccountPage {
   // Present an alert with the current username populated
   // clicking OK will update the username and display it
   // clicking Cancel will close the alert and do nothing
-  changeUsername() {
+  /*changeUsername() {
     let alert = this.alertCtrl.create({
       title: 'Change Username',
       buttons: [
@@ -68,4 +68,5 @@ export class AccountPage {
   support() {
     this.nav.push('SupportPage');
   }
+  */
 }

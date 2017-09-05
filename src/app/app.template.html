@@ -56,7 +56,7 @@
         <ion-row  >
             <ion-col col-2>
                 <ion-avatar item-start class="avatar" start>
-                    <img src="{{authService.currentUser.avatar">
+                    <img [src]="authService.currentUser.photoURL || './assets/logo.png'" alt="{{ authService.currentUser.displayName }}">
                   </ion-avatar>
             </ion-col>
             <ion-col col-10>
@@ -83,9 +83,6 @@
     <ion-content class="outer-content">
 
       <ion-list>
-        <ion-list-header>
-          Navigate
-        </ion-list-header>
        
         <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
