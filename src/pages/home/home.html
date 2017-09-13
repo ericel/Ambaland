@@ -45,6 +45,41 @@
       </ion-item>
     </ion-list>
 
+    <ion-list>
+      <ion-item-sliding #item>
+      <ion-item >
+        <ion-thumbnail item-start>
+          <img src="/assets/img/ica-slidebox-img-1.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988 [14:25:14]  deeplinks update started ...
+            [14:25:14]  deeplinks update finished in 16 ms</p>
+        <div clear>
+           <ion-row>
+             <ion-col col-4>
+                200 views
+             </ion-col>
+             <ion-col col-4>
+                200 likes
+             </ion-col>
+             <ion-col col-4>
+                20k comments
+             </ion-col>
+           </ion-row>
+        </div>
+        <!--<button ion-button clear item-end>View</button>-->
+      </ion-item>
+      <ion-item-options side="left">
+          <button ion-button (click)="favorite(item)">Favorite</button>
+          <button ion-button color="danger" (click)="share(item)">Share</button>
+        </ion-item-options>
+    
+        <ion-item-options side="right">
+          <button ion-button (click)="unread(item)">Unread</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
 
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
