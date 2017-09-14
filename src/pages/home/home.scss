@@ -22,4 +22,12 @@ page-home {
      padding-left: 10px;
    }
   }
+  .addons ion-col {
+    color: #8E8D93;
+    font-size: 12px;
+  }
+  .addons ion-col:hover {
+    color: color($colors, primary);
+    font-size: 12px;
+  }
 }
