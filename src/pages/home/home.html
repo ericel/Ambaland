@@ -34,16 +34,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="/assets/img/ica-slidebox-img-1.png">
-        </ion-avatar>
-        <h2>Finn</h2>
-        <h3>Don't Know What To Do!</h3>
-        <p>I've had a pretty messed up day. If we just...</p>
-      </ion-item>
-    </ion-list>
+
 
     <ion-list>
       <div>
@@ -52,7 +43,7 @@
         <ion-thumbnail item-start>
           <img src="/assets/img/ica-slidebox-img-1.png">
         </ion-thumbnail>
-        <h2>My Neighbor Totoro</h2>
+        <h2 class="primary">My Neighbor Totoro</h2>
         <p>Hayao Miyazaki • 1988 [14:25:14]  deeplinks update started ...
             [14:25:14]  deeplinks update finished in 16 ms</p>
         <div clear>
@@ -85,9 +76,9 @@
           <ion-item-sliding #item>
           <ion-item >
             <ion-thumbnail item-start>
-              <img src="/assets/img/ica-slidebox-img-1.png">
+              <img src="/assets/img/phone.jpg">
             </ion-thumbnail>
-            <h2 sticky>My Neighbor Totoro</h2>
+            <h2 sticky class="primary">My Neighbor Totoro</h2>
             <p>Hayao Miyazaki • 1988 [14:25:14]  deeplinks update started ...
                 [14:25:14]  deeplinks update finished in 16 ms</p>
             <div clear>
@@ -115,6 +106,111 @@
             </ion-item-options>
           </ion-item-sliding>
           </div>
+          
+      <div>
+        <ion-item-sliding #item>
+        <ion-item >
+          <ion-thumbnail item-start>
+            <img src="/assets/img/phone.jpg">
+          </ion-thumbnail>
+          <h2 sticky class="primary">My Neighbor Totoro</h2>
+          <p>Hayao Miyazaki • 1988 [14:25:14]  deeplinks update started ...
+              [14:25:14]  deeplinks update finished in 16 ms</p>
+          <div clear>
+             <ion-row class="addons">
+               <ion-col col-4>
+                  <ion-icon name="eye"></ion-icon> 3K views
+               </ion-col>
+               <ion-col col-4>
+                  <ion-icon name="thumbs-up"></ion-icon> 233 likes
+               </ion-col>
+               <ion-col col-4>
+                  <ion-icon name="chatbubbles"></ion-icon> 20k comments
+               </ion-col>
+             </ion-row>
+          </div>
+          <!--<button ion-button clear item-end>View</button>-->
+        </ion-item>
+        <ion-item-options side="left">
+            <button ion-button (click)="favorite(item)">Favorite</button>
+            <button ion-button color="danger" (click)="share(item)">Share</button>
+          </ion-item-options>
+      
+          <ion-item-options side="right">
+            <button ion-button (click)="unread(item)">Unread</button>
+          </ion-item-options>
+        </ion-item-sliding>
+        </div>
+        
+      <div>
+        <ion-item-sliding #item>
+        <ion-item >
+          <ion-thumbnail item-start>
+            <img src="/assets/img/phone.jpg">
+          </ion-thumbnail>
+          <h2 sticky class="primary">My Neighbor Totoro</h2>
+          <p>Hayao Miyazaki • 1988 [14:25:14]  deeplinks update started ...
+              [14:25:14]  deeplinks update finished in 16 ms</p>
+          <div clear>
+             <ion-row class="addons">
+               <ion-col col-4>
+                  <ion-icon name="eye"></ion-icon> 3K views
+               </ion-col>
+               <ion-col col-4>
+                  <ion-icon name="thumbs-up"></ion-icon> 233 likes
+               </ion-col>
+               <ion-col col-4>
+                  <ion-icon name="chatbubbles"></ion-icon> 20k comments
+               </ion-col>
+             </ion-row>
+          </div>
+          <!--<button ion-button clear item-end>View</button>-->
+        </ion-item>
+        <ion-item-options side="left">
+            <button ion-button (click)="favorite(item)">Favorite</button>
+            <button ion-button color="danger" (click)="share(item)">Share</button>
+          </ion-item-options>
+      
+          <ion-item-options side="right">
+            <button ion-button (click)="unread(item)">Unread</button>
+          </ion-item-options>
+        </ion-item-sliding>
+        </div>
+        
+      <div>
+        <ion-item-sliding #item>
+        <ion-item >
+          <ion-thumbnail item-start>
+            <img src="/assets/img/phone.jpg">
+          </ion-thumbnail>
+          <h2 sticky class="primary">My Neighbor Totoro</h2>
+          <p>Hayao Miyazaki • 1988 [14:25:14]  deeplinks update started ...
+              [14:25:14]  deeplinks update finished in 16 ms</p>
+          <div clear>
+             <ion-row class="addons">
+               <ion-col col-4>
+                  <ion-icon name="eye"></ion-icon> 3K views
+               </ion-col>
+               <ion-col col-4>
+                  <ion-icon name="thumbs-up"></ion-icon> 233 likes
+               </ion-col>
+               <ion-col col-4>
+                  <ion-icon name="chatbubbles"></ion-icon> 20k comments
+               </ion-col>
+             </ion-row>
+          </div>
+          <!--<button ion-button clear item-end>View</button>-->
+        </ion-item>
+        <ion-item-options side="left">
+            <button ion-button (click)="favorite(item)">Favorite</button>
+            <button ion-button color="danger" (click)="share(item)">Share</button>
+          </ion-item-options>
+      
+          <ion-item-options side="right">
+            <button ion-button (click)="unread(item)">Unread</button>
+          </ion-item-options>
+        </ion-item-sliding>
+        </div>
     </ion-list>
      
 
