@@ -11,7 +11,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-import { WeytindeyApp } from './app.component';
+import { AmbalandApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { HomeFilterPage } from '../pages/home-filter/home-filter';
@@ -46,7 +46,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    WeytindeyApp,
+    AmbalandApp,
     HomePage,
     HomeFilterPage,
     AboutPage,
@@ -65,7 +65,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(WeytindeyApp, {}, {
+    IonicModule.forRoot(AmbalandApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
         { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
@@ -88,7 +88,7 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    WeytindeyApp,
+    AmbalandApp,
     HomePage,
     HomeFilterPage,
     AboutPage,
